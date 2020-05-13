@@ -1,6 +1,7 @@
 plugins {
     kotlin("jvm") version "1.4-M1"
     id("com.github.johnrengelman.shadow") version "5.2.0"
+    application
 }
 
 group = "dev.cubxity"
@@ -20,6 +21,10 @@ dependencies {
     implementation("ch.qos.logback:logback-classic:1.3.0-alpha5")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.11.0")
     implementation("com.udojava:EvalEx:2.5")
+}
+
+application {
+    mainClassName = "dev.cubxity.kikora.KikoraMainKt"
 }
 
 tasks {
