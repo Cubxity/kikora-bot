@@ -3,6 +3,7 @@ package dev.cubxity.kikora.solve
 import dev.cubxity.kikora.solve.strategies.ChoiceBruteForceStrategy
 import dev.cubxity.kikora.solve.strategies.geo.GeoAutoStrategy
 import dev.cubxity.kikora.solve.strategies.geo.GeoCirclesStrategy
+import dev.cubxity.kikora.solve.strategies.math.ExpressionStrategy
 import org.slf4j.LoggerFactory
 
 class SolvingManager(private val strategies: List<SolvingStrategy>) {
@@ -12,7 +13,8 @@ class SolvingManager(private val strategies: List<SolvingStrategy>) {
                 GeoAutoStrategy,
                 ChoiceBruteForceStrategy,
 
-                GeoCirclesStrategy
+                GeoCirclesStrategy,
+                ExpressionStrategy
         ))
     }
 

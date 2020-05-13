@@ -1,5 +1,6 @@
 plugins {
     kotlin("jvm") version "1.4-M1"
+    id("com.github.johnrengelman.shadow") version "5.2.0"
 }
 
 group = "dev.cubxity"
@@ -17,6 +18,8 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.6")
     implementation("com.github.ajalt:clikt:2.6.0")
     implementation("ch.qos.logback:logback-classic:1.3.0-alpha5")
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.11.0")
+    implementation("com.udojava:EvalEx:2.5")
 }
 
 tasks {
@@ -25,5 +28,9 @@ tasks {
     }
     compileTestKotlin {
         kotlinOptions.jvmTarget = "1.8"
+    }
+    shadowJar {
+        archiveVersion.set("")
+        archiveClassifier.set("")
     }
 }

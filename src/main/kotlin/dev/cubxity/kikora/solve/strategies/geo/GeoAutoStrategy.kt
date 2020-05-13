@@ -7,7 +7,7 @@ import dev.cubxity.kikora.utils.KikoraUtils
 
 object GeoAutoStrategy : TermsSolvingStrategy {
     override val name = "GeoAuto"
-    override val supportedTypes = listOf(KikoraExerciseType.GEO_AUTO)
+    override val supportedTypes = listOf(KikoraExerciseType.GEO_AUTO, KikoraExerciseType.GEO_MANUAL)
 
     override suspend fun solveTerms(ctx: SolvingContext): Map<String, String>? {
         val hash = KikoraUtils.hashCode("${ctx.exercise.exerciseDefinition.exerciseId}${ctx.personInfo.personId}")
