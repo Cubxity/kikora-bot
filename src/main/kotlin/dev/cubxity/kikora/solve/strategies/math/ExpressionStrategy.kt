@@ -14,6 +14,7 @@ import dev.cubxity.kikora.utils.asLatex
 
 object ExpressionStrategy : TermsSolvingStrategy {
     private val REGEX = "\\[\\[km:(\\{[^]]+)]]".toRegex()
+    private val PERCENT_REGEX = "(\\d+[,.]\\d+)%".toRegex()
     private val jackson = jacksonObjectMapper()
 
     override val name = "Expression"
@@ -33,12 +34,12 @@ object ExpressionStrategy : TermsSolvingStrategy {
 
     private fun asAnswer(exercise: KikoraExercise, result: Double) = when {
         "brøk" in exercise.task -> result.asFraction().asLatex()
-        "Regn ut" in exercise.task -> "$result"
-        else -> null
+        else -> "$result"
     }
 
     private fun translate(exercise: KikoraExercise, text: String): String {
-        var newText = text
+        var newText = text.replace(PERCENT_REGEX) { (it.groupValues[1].toDouble() / 100.0).toString() }
+
         if (exercise.languageCode == "nb")
             newText = newText.replace(',', '.')
                     .replace('.', ',')
